@@ -53,6 +53,7 @@ const paginaInicio = computed(() => route.name === 'inicio')
             type="text"
             class="p-3 w-full rounded-lg focus:outline-none bg-white text-gray-700 placeholder-gray-400 border-gray-200"
             placeholder="Nombre o Ingrediente: ej. Vodka, Tequila, etc."
+            v-model="store.busqueda.nombre"
           />
         </div>
 
@@ -65,6 +66,7 @@ const paginaInicio = computed(() => route.name === 'inicio')
             type="text"
             class="p-3 w-full rounded-lg focus:outline-none bg-white text-gray-700 placeholder-gray-400 border-gray-200"
             placeholder="Nombre o Ingrediente: ej. Vodka, Tequila, etc."
+            v-model="store.busqueda.categoria"
           >
             <option value="">-- Seleccione --</option>
             <option

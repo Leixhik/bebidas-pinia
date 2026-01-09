@@ -10,14 +10,20 @@ export const useBebidasStore = defineStore('bebidas', () => {
     categoria : ''
   })
 
-  onMounted(async () => {
+  onMounted(async function() {
     const {data: {drinks}} = await axios('https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list')
 
     categorias.value = drinks
   })
 
+
+  function obtenerRecetas(){
+    console.log('Consultando API...')
+  }
+
   return{
     categorias,
-    busqueda
+    busqueda,
+    obtenerRecetas
   }
 })

@@ -10,6 +10,11 @@ console.log(store.categorias);
 
 const paginaInicio = computed(() => route.name === 'inicio')
 
+const handleSubmit = () => {
+  //ToDo: Validar
+  store.obtenerRecetas()
+}
+
 </script>
 
 <template>
@@ -43,7 +48,11 @@ const paginaInicio = computed(() => route.name === 'inicio')
         </nav>
       </div>
 
-      <form class="md:w-1/2 2xl:w-1/3 bg-orange-400 my-32 p-10 rounded-lg shadow space-y-6" v-if="paginaInicio">
+      <form
+        v-if="paginaInicio" 
+        class="md:w-1/2 2xl:w-1/3 bg-orange-400 my-32 p-10 rounded-lg shadow space-y-6" 
+        @submit.prevent="handleSubmit"
+      >
         <div class="space-y-4">
           <label class="block text-white uppercase font-extrabold text-lg" for="ingrediente"
             >Nombre o Ingredientes</label

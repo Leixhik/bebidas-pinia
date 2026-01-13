@@ -8,7 +8,7 @@
 
 <template>
     <TransitionRoot as="template" :show="modal.modal" >
-      <Dialog as="div" class="relative z-10">
+      <Dialog as="div" class="relative z-10" @close="modal.handleClickModal()">
         <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0" enter-to="opacity-100" leave="ease-in duration-200" leave-from="opacity-100" leave-to="opacity-0">
           <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
         </TransitionChild>
@@ -24,7 +24,13 @@
                   </div>
                 </div>
                 <div class="mt-5 sm:mt-6 flex justify-between gap-4">
-
+                  <button
+                    type="button"
+                    class="w-full rounded bg-gray-600 p-3 font-bold uppercase text-white shadow hover:bg-gray-500"
+                    @click="modal.handleClickModal()"
+                  >
+                    Cerrar
+                  </button>
                 </div> 
               </DialogPanel>
             </TransitionChild>

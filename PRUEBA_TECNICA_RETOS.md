@@ -68,6 +68,20 @@ Escribe (en 10–20 líneas) una explicación técnica que cubra:
 Header (form) -> Pinia (busqueda) -> APIService -> Pinia (recetas) -> InicioView (grid) -> Receta (click) -> Pinia (receta) -> Modal
 ```
 
+  El flujo de datos en este proyecto es el siguiente: 
+  Se comienza en el componente de Header mediante un form, utilizando el @submit para evitar la recarga de la pagina. 
+  Habra un label/input que obtendra el Nombre o Ingrediente que el usuario busque, esto estara a la escucha gracias al v-model del input, que reaccionara al instante con lo que el usuario busque.
+  Tambien habra un label que hace un llamado a la API de TheCockTail para obtener las categorias y mostrarlas en forma de select/option, y esta usa un v-for para iterar todas las categorias.
+  Despues un input submit para que el boton de busqueda.
+  Una vez obtenido los datos que el usuario desea buscar se hace la busqueda desde bebidas.js con las funciones necesarias, estas funciones pasan al modal que se encargara de mostrar mediante logica de js la iteracion de cada bebida seleccionada, usando un modal de Headless UI en donde estara el nombre de la bebida, los ingredientes y la preparacion de la receta.
+
+  En Pinia, el state se vive en bebidas.js que trae la informacion de todas las bebidas y las almacena.
+
+  Por el momento, en cada vista se renderiza los componentes de Header, Modal, Receta, cada una de estas con su respectiva funcion y los views que nos permiten cargar las paginas de Inicio y Favoritos.
+
+
+  Considero que este mini diagrama ya viene tal cual como lo explicaria.
+  Header (form) -> Pinia (busqueda) -> APIService -> Pinia (recetas) -> InicioView (grid) -> Receta (click) -> Pinia (receta) -> Modal(Bebida + Informacion)
 ---
 
 ## Parte 2 — Features “rápidos” (obligatorios)
@@ -78,9 +92,9 @@ En `src/components/Header.vue`, el submit tiene un `//ToDo: Validar`.
 
 Implementa validación con estas reglas (elige tú la UX, pero debe ser clara):
 
-- No permitir buscar si `nombre` y `categoria` están vacíos.
-- Mostrar un mensaje de error visible (por ejemplo arriba del botón, o debajo de inputs).
-- Limpiar el error cuando el usuario corrige.
+- No permitir buscar si `nombre` y `categoria` están vacíos. (Listo)
+- Mostrar un mensaje de error visible (por ejemplo arriba del botón, o debajo de inputs). (Listo)
+- Limpiar el error cuando el usuario corrige. (Pendiente)
 
 **Criterios de aceptación**
 - Si ambos están vacíos, no llama a `store.obtenerRecetas()`.

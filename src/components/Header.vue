@@ -1,18 +1,36 @@
 <script setup>
-import { computed } from "vue";
+import { ref, computed } from "vue";
 import { RouterLink, useRoute } from 'vue-router'
 import { useBebidasStore } from '../stores/bebidas'
+import Alerta from "./Alerta.vue"
 
 const route = useRoute()
 const store = useBebidasStore()
-console.log(store.categorias);
+const busqueda = useBebidasStore().busqueda
 
+const error = ref('')
 
 const paginaInicio = computed(() => route.name === 'inicio')
 
 const handleSubmit = () => {
   //ToDo: Validar
-  store.obtenerRecetas()
+  if (busqueda.nombre === '' && busqueda.categoria === '' ) {
+     error.value = 'Favor de rellenar todos los campos.'
+        setTimeout(() => {
+            error.value = ''
+        }, 3000);
+      return
+  }
+  else if (busqueda.categoria === '')  {
+      error.value = 'Seleccione una Categoria.'
+        setTimeout(() => {
+            error.value = ''
+        }, 3000);
+        return
+  } 
+  else {
+    store.obtenerRecetas()
+  }
 }
 
 </script>
@@ -47,6 +65,8 @@ const handleSubmit = () => {
           </RouterLink>
         </nav>
       </div>
+
+      <Alerta v-if="error">{{ error }}</Alerta>
 
       <form
         v-if="paginaInicio" 

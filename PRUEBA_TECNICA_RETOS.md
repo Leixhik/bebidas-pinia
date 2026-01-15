@@ -94,28 +94,28 @@ Implementa validación con estas reglas (elige tú la UX, pero debe ser clara):
 
 - No permitir buscar si `nombre` y `categoria` están vacíos. (Listo)
 - Mostrar un mensaje de error visible (por ejemplo arriba del botón, o debajo de inputs). (Listo)
-- Limpiar el error cuando el usuario corrige. (Pendiente)
+- Limpiar el error cuando el usuario corrige. (Listo + Cuando termina de realizar la busqueda.)
 
 **Criterios de aceptación**
-- Si ambos están vacíos, no llama a `store.obtenerRecetas()`.
-- El usuario entiende qué hacer.
+- Si ambos están vacíos, no llama a `store.obtenerRecetas()`. (Listo)
+- El usuario entiende qué hacer. (Listo)
 
 ### Reto B — Estados de carga, error y “sin resultados”
 
 Agrega a `src/stores/bebidas.js` estados mínimos:
 
-- `loading` (boolean)
-- `error` (string | null)
+- `loading` (boolean) (Listo)
+- `error` (string | null) (Listo)
 
 Y refleja esos estados en `src/views/InicioView.vue`:
 
-- Cuando `loading=true`, mostrar un “Cargando…” (o spinner si quieres).
-- Si hay error, mostrarlo.
-- Si la búsqueda termina sin resultados, mostrar un mensaje tipo “No se encontraron recetas”.
+- Cuando `loading=true`, mostrar un “Cargando…” (o spinner si quieres). (Listo)
+- Si hay error, mostrarlo. (Pendiente pero listo, lo hace manualmente el bebidas.js)
+- Si la búsqueda termina sin resultados, mostrar un mensaje tipo “No se encontraron recetas”.(Pendiente)
 
 **Criterios de aceptación**
-- `loading` se activa antes de la request y se apaga al finalizar (success o fail).
-- `error` se setea en catch y se limpia al iniciar una nueva búsqueda.
+- `loading` se activa antes de la request y se apaga al finalizar (success o fail).(Listo)
+- `error` se setea en catch y se limpia al iniciar una nueva búsqueda. (Listo)
 
 ### Reto C — Favoritos con Pinia + persistencia
 

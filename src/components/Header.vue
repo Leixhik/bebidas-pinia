@@ -76,7 +76,7 @@ const handleSubmit = () => {
         </nav>
       </div>
 
-      <Alerta v-if="error">{{ error }}</Alerta>
+      <Alerta v-if="error || store.error">{{ error || store.error }}</Alerta>
 
       <form
         v-if="paginaInicio" 

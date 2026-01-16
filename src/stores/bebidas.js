@@ -7,6 +7,9 @@ export const useBebidasStore = defineStore('bebidas', () => {
 
   const modal = useModalStore()
 
+  const cargando = ref(false)
+  const error = ref(null)
+
   const categorias = ref([])
   const busqueda = reactive({
     nombre : '',
@@ -17,22 +20,46 @@ export const useBebidasStore = defineStore('bebidas', () => {
   const receta = ref({})
 
   onMounted(async function() {
-    const {data: {drinks}} = await APIService.obtenerCategorias()
-
-    categorias.value = drinks
+    cargando.value = true
+    error.value = ''
+    try {
+      const {data: {drinks}} = await APIService.obtenerCategorias()
+      categorias.value = drinks
+    }catch(error){
+      error.value = "Hubo un problema al cargar las recetas"
+    }finally{
+      cargando.value = false
+    }
+    
   })
 
 
   async function obtenerRecetas(){
-    const {data: {drinks}} = await APIService.buscarRecetas(busqueda)
-    recetas.value = drinks
+    cargando.value = true
+    error.value = ''
+    try {
+      const {data: {drinks}} = await APIService.buscarRecetas(busqueda)
+      recetas.value = drinks
+    }catch(error){
+      error.value = "Hubo un problema al cargar las recetas"
+    }finally{
+      cargando.value = false
+    }
   }
 
   async function seleccionarBebida(id){
+    cargando.value = true
+    error.value = ''
+    try{
     const { data: {drinks}} = await APIService.buscarReceta(id)
     receta.value =drinks[0]
 
     modal.handleClickModal()
+    }catch(error) {
+      error.value = "Hubo un problema al cargar las recetas"
+    }finally{
+      cargando.value = false
+    }
   }
 
   return{
@@ -41,6 +68,8 @@ export const useBebidasStore = defineStore('bebidas', () => {
     obtenerRecetas,
     recetas,
     seleccionarBebida,
-    receta
+    receta,
+    error,
+    
   }
 })

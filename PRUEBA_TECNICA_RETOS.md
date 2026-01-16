@@ -110,7 +110,7 @@ Agrega a `src/stores/bebidas.js` estados mínimos:
 Y refleja esos estados en `src/views/InicioView.vue`:
 
 - Cuando `loading=true`, mostrar un “Cargando…” (o spinner si quieres). (Listo)
-- Si hay error, mostrarlo. (Pendiente pero listo, lo hace manualmente el bebidas.js)
+- Si hay error, mostrarlo. (Pendiente pero listo, lo hace manualmente el bebidas.js, ya que no se por que no se trae el error global desde bebidas hasta Heading)
 - Si la búsqueda termina sin resultados, mostrar un mensaje tipo “No se encontraron recetas”.(Pendiente)
 
 **Criterios de aceptación**

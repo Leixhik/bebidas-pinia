@@ -37,10 +37,10 @@ const handleSubmit = () => {
         return
   } 
   else {
-    store.obtenerRecetas()
-    busqueda.nombre =''
-    busqueda.categoria = ''
-  }
+        store.obtenerRecetas()
+        busqueda.nombre = ''
+        busqueda.categoria = ''
+      }
 }
 
 </script>

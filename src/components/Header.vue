@@ -20,9 +20,6 @@ const handleSubmit = () => {
             error.value = ''
         }, 3000);
 
-        busqueda.nombre =''
-        busqueda.categoria = ''
-
       return
   }
   else if (busqueda.categoria === '')  {
@@ -30,9 +27,6 @@ const handleSubmit = () => {
         setTimeout(() => {
             error.value = ''
         }, 3000);
-
-        busqueda.nombre =''
-        busqueda.categoria = ''
 
         return
   } 

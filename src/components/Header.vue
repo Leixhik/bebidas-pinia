@@ -49,7 +49,7 @@ const handleSubmit = () => {
           </RouterLink>
         </div>
 
-        <nav class="flex gap-4">
+        <nav class="flex gap-4 text-white">
           <RouterLink
             :to="{ name: 'inicio' }"
             v-slot="{ isActive }"

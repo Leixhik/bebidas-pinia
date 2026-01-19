@@ -81,7 +81,7 @@
                     class="w-full rounded bg-orange-600 p-3 font-bold uppercase text-white shadow hover:bg-gray-500"
                     @click="favoritos.handleClickFavorito()"
                   >
-                    Agregar a Favoritos
+                    {{ modal.textoBoton }}
                   </button>
 
                 </div> 
